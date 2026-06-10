@@ -1,5 +1,4 @@
 import cv2
-import numpy as np
 
 # Como achar a imagem:
 # variavel = biblioteca.funcao(r"CAMINHO DA IMAGEM")
