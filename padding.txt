@@ -1,0 +1,36 @@
+adiciona uma "borda nova" na imagem
+útil para manter o tamanho da imagem (convolution) ao aplicar mascaras
+
+tipos:
+    - constant: iiiii|123456789|iiiii: com um valor específico de i
+    - replicate: 11111|123456789|99999
+    - reflect: 54321|123456789|54321 (pega o último valor)
+    - reflect101/default: 98765432|123456789|87654321 (não pega o última valor)
+
+para manter o tamanho temos que pegar:
+Largura_nova = Largura_original + 2*p (e o mesmo para a altura)
+
+estrutura TensorFlow (tf): (Usada em IA)
+tf.nn.conv2d(X, W1, strides = [1,1,1,1], padding = 'SAME' ou 'VALID')
+    (A Imagem de Entrada)
+        X = Tensor de 4 dimensões: Batch, Altura, Largura, Canais 
+            - Batch: Quantas imagens você está enviando de uma vez só para a rede
+            - Altura/Largura: O tamanho da imagem em pixels
+            - Canais: A profundidade de cor da imagem. Se for em escala de cinza, é 1. Se for colorida (RGB), é 3.
+    (Os Pesos / Filtros)
+        W1 = Tensor de 4 dimensões: Altura do Filtro, Largura do Filtro, Canais de Entrada, Canais de Saída
+            - Altura e Largura do Filtro: O tamanho da janela que vai deslizar pela imagem
+            - Canais de Entrada: Deve ser exatamente igual ao número de canais da imagem X
+            - Canais de Saída: Quantos filtros diferentes você quer aplicar
+    (O Passo do Filtro)
+        strides = [1, 1, 1, 1] = de quantos em quantos pixels ele vai "pular" enquanto varre a imagem
+    (A Margem)
+        padding = 'SAME' ou 'VALID'
+            Quando usar o VALID:
+                - compactação
+                - evitar dados artificiais
+                - bom para IA enxergar o contexto geral da imagem
+            Quando usar o SAME:
+                - manter o tamanho
+                - manter os detlhes para contorno
+                - detecção de objetos perto das bordas 
