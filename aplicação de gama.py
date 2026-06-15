@@ -9,7 +9,7 @@ Gamma > 1.0 : A curva fica abaixo da diagonal. Isso comprime os tons, tornando a
 import cv2
 import numpy as np
 
-img = cv2.imread(r"Fotos\piramides.jpg")
+img = cv2.imread(r"projetos_treinamento\Fotos\piramides.jpg")
 img_cinza = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
 gama = float(input("Digite o valor de Gamma: "))

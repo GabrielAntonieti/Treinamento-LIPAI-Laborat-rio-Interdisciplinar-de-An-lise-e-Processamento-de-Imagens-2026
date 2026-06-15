@@ -1,6 +1,6 @@
 import cv2
 
-piramides = cv2.imread(r"Fotos\piramides.jpg")
+piramides = cv2.imread(r"projetos_treinamento\Fotos\piramides.jpg")
 
 cv2.namedWindow("piramides", cv2.WINDOW_NORMAL)
 cv2.imshow("piramides", piramides)

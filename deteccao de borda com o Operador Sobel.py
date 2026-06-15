@@ -29,7 +29,7 @@ sobel_vertical = np.array([[1, 2, 1],
                            [0, 0, 0],
                            [-1, -2, -1]])
 
-img = cv2.imread(r"Fotos\piramides.jpg")
+img = cv2.imread(r"projetos_treinamento\Fotos\piramides.jpg")
 img_cinza =  cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
 

@@ -2,8 +2,8 @@ import cv2
 
 # Como achar a imagem:
 # variavel = biblioteca.funcao(r"CAMINHO DA IMAGEM")
-dg = cv2.imread(r"Fotos\dg_xadrez.jpg")
-love = cv2.imread(r"Fotos\Love.jpg")
+dg = cv2.imread(r"projetos_treinamento\Fotos\dg_xadrez.jpg")
+love = cv2.imread(r"projetos_treinamento\Fotos\Love.jpg")
 
 
 # Passo a passo:

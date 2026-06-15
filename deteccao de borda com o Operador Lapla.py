@@ -24,7 +24,7 @@ Se False, usa uma aproximação mais rápida (soma absoluta).
 
 import cv2
 
-img = cv2.imread(r"Fotos\piramides.jpg")
+img = cv2.imread(r"projetos_treinamento\Fotos\piramides.jpg")
 img_cinza =  cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
 # laplaciano

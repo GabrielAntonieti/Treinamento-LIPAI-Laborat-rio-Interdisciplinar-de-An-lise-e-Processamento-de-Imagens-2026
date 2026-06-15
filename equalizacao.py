@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 
 # Carrega a imagem
-raiox = cv2.imread(r"Fotos\Love.jpg")
+raiox = cv2.imread(r"projetos_treinamento\Fotos\Love.jpg")
 raiox_cinza = cv2.cvtColor(raiox, cv2.COLOR_BGR2GRAY)
 
 # Passo 1: Contagem das tonalidades

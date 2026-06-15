@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-img = cv2.imread("Fotos\yumi.jpg", cv2.IMREAD_GRAYSCALE)
+img = cv2.imread("projetos_treinamento\Fotos\yumi.jpg", cv2.IMREAD_GRAYSCALE)
 altura, largura = img.shape
 
 # quantos pixels na borda

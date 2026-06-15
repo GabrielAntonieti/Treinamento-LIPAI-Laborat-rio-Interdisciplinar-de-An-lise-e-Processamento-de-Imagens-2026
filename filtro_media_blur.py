@@ -6,7 +6,7 @@ N = int(input("Digite um número inteiro: "))
 lateral = N // 2    # Quantos pixels olhar para cada lado (para N=15, olhar 7 pixels)
 area = N * N
 
-piramides = cv2.imread(r"Fotos\piramides.jpg")
+piramides = cv2.imread(r"projetos_treinamento\Fotos\piramides.jpg")
 piramides_cinza = cv2.cvtColor(piramides, cv2.COLOR_BGR2GRAY)
 
 # variavel = funcao blur (img cinza , (malha impar))

@@ -1,8 +1,8 @@
 import cv2
 
 # chama a imagem
-xadrez = cv2.imread(r"Fotos\xadrez.jpg")
-love = cv2.imread(r"Fotos\Love_20x20.jpg")
+xadrez = cv2.imread(r"projetos_treinamento\Fotos\xadrez.jpg")
+love = cv2.imread(r"projetos_treinamento\Fotos\Love_20x20.jpg")
 
 #transforma em cinza (BGR em GRAY)
 #imagem cinza = funcao converter cor em (imagem original para funcao cor cinza)
