@@ -12,6 +12,25 @@ def segmentar_threshold(imagem_cinza, valor_limiar=135):
     return seg_binaria
 
 # =====================================================================
+# METODO 1.1: Limiarização Binária (Thresholding) NA Mão
+# =====================================================================
+
+def segmentar_limiarizacao_na_mao(imagem_cinza, limite=135):
+    altura, largura = imagem_cinza.shape
+    img_limiarizada = np.zeros((altura, largura), dtype="uint8")    
+
+    for y in range(altura):
+        for x in range(largura):
+            tom_cinza = imagem_cinza[y, x]     # Pega o tom de cinza do pixel atual (um único número de 0 a 255)
+
+            if tom_cinza > limite:
+                img_limiarizada[y, x] = 255  # Vira Branco
+            else:
+                img_limiarizada[y, x] = 0    # Vira Preto
+
+    return img_limiarizada
+
+# =====================================================================
 # METODO 2: Segmentação por Cores (Espaço HSV)
 # =====================================================================
 def segmentar_por_cor_hsv(imagem_colorida):
@@ -23,7 +42,8 @@ def segmentar_por_cor_hsv(imagem_colorida):
     bege_alto  = np.array([25, 140,  255])
     
     # Cria a máscara onde apenas o raio da cor selecionada vira branco
-    mascara_bege = cv2.inRange(hsv, bege_baixo, bege_alto if 'beige_alto' in locals() else bege_alto)
+    mascara_bege = cv2.inRange(hsv, bege_baixo, bege_alto)
+    
     return mascara_bege
 
 # =====================================================================
@@ -103,12 +123,14 @@ if __name__ == "__main__":
     
     # Executa cada uma das funções criadas acima
     resultado_thresh = segmentar_threshold(img_cinza, valor_limiar=135)
+    resultado_limiarizacao = segmentar_limiarizacao_na_mao(img_cinza, limite=135)
     resultado_hsv = segmentar_por_cor_hsv(img_colorida)
     resultado_watershed = segmentar_watershed(img_colorida, img_cinza)
     resultado_grabcut = segmentar_grabcut(img_colorida)
     
     cv2.imshow("Original Base (Cinza)", img_cinza)
     cv2.imshow("1. Resultado Threshold", resultado_thresh)
+    cv2.imshow("1.1. Resultado Limiarizacao na mao", resultado_limiarizacao)    
     cv2.imshow("2. Resultado HSV (Amarelo)", resultado_hsv)
     cv2.imshow("3. Resultado Watershed", resultado_watershed)
     cv2.imshow("4. Resultado GrabCut", resultado_grabcut)
