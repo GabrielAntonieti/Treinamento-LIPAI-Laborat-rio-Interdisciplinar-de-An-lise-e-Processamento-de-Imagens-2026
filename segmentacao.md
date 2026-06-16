@@ -1,4 +1,4 @@
-1. Limiarização (Thresholding) (Imagem cinza):
+1. # Limiarização (Thresholding) (Imagem cinza):
     - Deixa a imagem branca e preta baseado em uma tonalidade de cinza
     - Exemplo: tom(127):
         - Pixels > 127 ficam brancos 
@@ -12,8 +12,19 @@
             - cv2.THRESH_BINARY: Regra utilizada
     - Enxerga os objetos diferentes mas juntos como um só
 
+    # Utilizado em:
+        - Leitura e Escaneamento de Documentos
+        - Inspeção Industrial de Silhuetas
+        - Contagem de Objetos Isolados
+        - Detecção Automática de Fraturas e Próteses em Raios-X
 
-2. Segmentação por Cores (Imagem HSV):
+    # Quando usar:
+        - Quando o seu objeto de interesse tem um brilho/contraste radicalmente diferente do fundo e eles não estão muito colados uns nos outros
+
+==========================================================================================================================
+==========================================================================================================================
+
+2. # Segmentação por Cores (Imagem HSV):
     - Define-se um limite inferior e um limite superior da cor que deseja capturar
     - O OpenCV cria uma máscara mantendo apenas os pixels que estão dentro desse intervalo
     # Exemplo:
@@ -24,7 +35,19 @@
         #Cria uma máscara onde apenas o que é azul fica branco
         mascara_azul = cv2.inRange(hsv, azul_baixo, azul_alto) # Funciona tipo um if(está no raio dos limites)
 
-3. Algoritmo Watershed (Divisor de Águas) (Separar os objetos juntos) (Imagem colorida[RGB/BGR]):
+    # Utilizado em:
+        - Robótica e Veículos Autônomos
+        - Triagem e Classificação de Alimentos
+        - Sistemas de Cromaqui
+        - Análise de Papanicolau e Biópsias por Telemedicina
+    
+    # Quando usar:
+        - Quando a cor do objeto é a sua característica mais marcante e única na imagem, independentemente do formato dele
+
+==========================================================================================================================
+==========================================================================================================================
+
+3. # Algoritmo Watershed (Divisor de Águas) (Separar os objetos juntos) (Imagem colorida[RGB/BGR]):
     - Separa os objetos por meio de uma "inuncação" feita na imagem cinza
     - Para inundar, a maquina detecta a diferença de "altura" da imagem
         - Escuros: Vales
@@ -69,7 +92,19 @@
         cv2.waitKey(0)
         cv2.destroyAllWindows()
 
-4. Algoritmo GrabCut (Segmentação Baseada em Interação)
+    # Utilizado em:
+        - Medicina e Biologia
+        - Análise de Materiais
+        - Geologia e Agricultura
+        - Mapeamento de Conexões Neuronais e Contagem de Células-Tronco
+
+    # Quando usar:
+        - Quando você precisa contar ou medir objetos individuais da mesma espécie que estão colados, encostados ou amontoados e a limiarização comum os transformaria em um borrão único
+
+==========================================================================================================================
+==========================================================================================================================
+
+4. # Algoritmo GrabCut (Segmentação Baseada em Interação)
     - É um algoritmo para remoção de fundo
     - Desenha-se um polígono ao redor do objeto principal
     - O algoritmo analisa o que está dentro e fora do polígono (retângulo), estima os modelos de cor do fundo e do objeto, e faz uma segmentação refinada da silhueta
@@ -99,3 +134,12 @@
 
         # Multiplicar a máscara pela imagem original para recortar o fundo
         img_recortada = img * mascara_final[:, :, np.newaxis]
+    
+    # Utilizado em:
+        - Editores de Fotos
+        - Foco e Desfoque de Câmera
+        - Criação de Banco de Dados para IAs
+        - Isolamento de Tumores 3D em Tomografias e Ressonâncias (MRI)
+
+    # Quando usar:
+        - Quando o objeto tem formas complexas, cores variadas e texturas difíceis, mas você consegue delimitar uma caixa de seleção ao redor dele para ajudar o algoritmo
