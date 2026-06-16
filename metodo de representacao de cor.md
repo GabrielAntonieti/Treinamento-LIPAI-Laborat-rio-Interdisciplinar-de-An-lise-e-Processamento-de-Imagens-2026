@@ -49,7 +49,7 @@
 
         + Escalas:
         - Vermelho: 0 a 10 (e também de 171 a 180, porque o círculo fecha em si mesmo)
-        - Laranja: 11 a 25
+        - Laranja: 11 a 25 
         - Amarelo: 26 a 35
         - Verde: 36 a 85
         - Azul: 86 a 130
@@ -67,7 +67,11 @@
 
 5. # HSI
     - H (Hue): Idêntico ao HSV
-    - S (Saturation): Mede o quão distante a cor está do eixo central cinza
+        - vermelho: 0°/360°
+        - verde: 120°
+        - azul: 240°
+    - S (Saturation): Mede o quão distante a cor está do eixo central cinza, a menor entre as r,g,b normalizadas (r,g,b/255)
+        > S = 1 - (min(r,g,b)) / I  
     - [I] (Intensity): É a média aritmética simples dos canais: Intensidade = {(R+G+B)/3}
 
     + Utlizado no aprimoramento de imagem, técnicas de filtragem de frequência, análise de imagens de satélite, reconstruindo a luz para ficar mais fiel, diferente do RGB
