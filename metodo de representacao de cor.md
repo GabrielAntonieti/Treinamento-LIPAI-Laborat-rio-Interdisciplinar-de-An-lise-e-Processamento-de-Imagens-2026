@@ -87,7 +87,7 @@
 ==========================================================================================================================
 
 7. # Escalas de Tons de Cinza Médicos (DICOM, HU e Windowing)
-    - Escala utilizada em equipamentos médicos, os quais salvam imagens em [.dm] (DICOM) para averiguar com precisão as imagens obtidas, utilizando 12 ou 16 pixels, com isso, é possível ter uma variação de 4096 a 65536 tons de cinza
+    - Escala utilizada em equipamentos médicos, os quais salvam imagens em [.dcm] (DICOM) para averiguar com precisão as imagens obtidas, utilizando 12 ou 16 pixel, com isso, é possível ter uma variação de 4096 a 65536 tons de cinza
     + Escala:
         - -1000 HU: Ar (totalmente preto)
         -  +20 HU a +80 HU: Tumores e Sangramentos
@@ -111,9 +111,21 @@
         - Janela de Pulmão (Ex: WW: 1500, WL: -600):
             - Como o pulmão é cheio de ar, a janela é jogada lá para os valores negativos da escala, permitindo que veja a textura interna dos alvéolos e detecte casos como a pneumonia, nódulos ou enfisema
         
-
     + Assim é possível converter as imagens de (-1000 HU a +1000 HU) para (0 a 255)
         +----------------------------------------------------------------------------------+
         |  Mundo Médico (DICOM 16 bits)  ===>  Janelamento  ===>  Mundo IA (OpenCV 8 bits) |
         |      (-1000 HU a +1000 HU)             (WW / WL)             (0 a 255)           |
         +----------------------------------------------------------------------------------+
+
+    
+    + # Conversão de profundidade de 8 para 16/12 bits (Expansão / Upscaling):
+        - Para 12 bits: (4095/255) = 16.05
+        - para 16 bits: (65535/255) = 257.0
+            - Basta multipliar o valor do bit cinza (0 a 255) pelo desejado (16.05 ou 257.0)
+    
+    + # Conversão de profundidade de 16/12 para 8 bits (Compressão / Downscaling):
+        - Definir o valor Mínimo e o Máximo da janela:
+            > Mínimo (Limite Inferior): Min = WL - (WW/2)
+            > Máximo (Limite Superior): Max = WL + (WW/2)
+        - Aplicar a fórmula:
+            > Pixel(8bits) = [ (Pixel12/16bits - Min) / (Max - Min) ] *255
