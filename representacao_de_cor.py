@@ -13,6 +13,7 @@ else:
     img_hsv = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2HSV)
     img_hls = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2HLS)
 
+    # =====================================================================================================================
     # RGB para HSI na mao
     altura, largura, canais = img_bgr.shape
 
@@ -64,6 +65,7 @@ else:
 
             img_hsi[y, x] = [h_final, s_final, i_final]
 
+    # =====================================================================================================================
 
     # Exibição
     # Para o RGB, ele mostrará as cores trocadas (azul e vermelho invertidos)
